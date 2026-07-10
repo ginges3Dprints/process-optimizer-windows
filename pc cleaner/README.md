@@ -17,6 +17,28 @@ It organizes your active tasks into distinct safety tiers, displays precise reso
 
 ---
 
+## 🗺️ Project Roadmap & Future Features
+
+We are actively working to make Task Master Pro the ultimate alternative to the Windows Task Manager. Here is what we have planned for upcoming releases:
+
+### 🟢 Phase 1: Quality of Life & Customization (Next Release)
+- [ ] **Config File Persistence (`.ini` or `.json`):** Save your custom whitelist permanently to your hard drive so you don't have to re-type safe apps every time you reopen the tool.
+- [ ] **Dark Mode Toggle:** A sleek, modern dark user interface option for nighttime gaming sessions.
+- [ ] **Real-time Live Refresh:** Automatically refresh the process lists every 5 seconds without needing to click the "Scan" button manually.
+
+### 🟡 Phase 2: Automation & Advanced Optimization
+- [ ] **Automated "Game Mode" Trigger:** Detect when a heavy game launcher (like Steam or Epic Games) opens, and automatically purge background junk in silence to maximize FPS.
+- [ ] **CPU Usage Tracking:** Add a second line to the Inspector box showing active CPU percentage utilization alongside the RAM metrics.
+- [ ] **Exportable System Logs:** Allow users to save their "Activity Console" text as a `.txt` file to diagnose persistent system slowdowns.
+
+### 🔴 Phase 3: Performance Hardware Visualizers
+- [ ] **Mini Resource Graphs:** Add live visual canvas graphs tracking overall system RAM and CPU load directly on the dashboard.
+- [ ] **Process Tree Tracking:** Group child processes (like multiple open browser tabs) under a single expandable parent name to keep the dashboard tidy.
+
+*Have a killer idea not on this list? Join the Discord below and drop it in our suggestions channel!*
+
+---
+
 ## 💬 Community & Support
 
 Need help setting up, found a bug, or want to request a feature? Join our community Discord server to connect with other users and get direct support:
