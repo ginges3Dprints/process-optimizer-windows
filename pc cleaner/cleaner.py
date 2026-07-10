@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 import webbrowser
 import tkinter as tk
 from tkinter import messagebox, ttk
@@ -18,8 +19,11 @@ IGNORE_PROCESSES = {
 DEFAULT_SAFE = {
     "chrome.exe", "msedge.exe", "firefox.exe", "spotify.exe", 
     "discord.exe", "steam.exe", "steamwebhelper.exe", "notepad.exe", 
-    "vlc.exe", "teams.exe", "slack.exe"
+    "vlc.exe", "teams.exe", "slack.exe","startmenuexperiencehost.exe", 
+    "searchhost.exe", "shellexperiencehost.exe"
 }
+
+CONFIG_FILE = "task_master_config.json"
 
 class UltimatePowerCleaner:
     def __init__(self, root):
@@ -42,6 +46,8 @@ class UltimatePowerCleaner:
         # -----------------------------------
 
         self.user_whitelist = set()
+        self.load_whitelist_from_file() # Load saved rules immediately on startup
+
         self.style = ttk.Style()
         self.style.theme_use("clam")
         
@@ -60,6 +66,7 @@ class UltimatePowerCleaner:
         
         self.create_main_widgets()
         self.create_settings_widgets()
+        self.populate_whitelist_box()
 
     def create_main_widgets(self):
         header = tk.Frame(self.main_tab, bg="#2c3e50", height=50)
@@ -93,7 +100,7 @@ class UltimatePowerCleaner:
         self.unknown_container = tk.Frame(self.unknown_group, bg="#ffffff")
         self.unknown_container.pack(fill="x", padx=5, pady=5)
         
-        # MIDDLE COLUMN: Process Inspector (Width rule assigned on creation line properly)
+        # MIDDLE COLUMN: Process Inspector (Centered)
         middle_frame = ttk.LabelFrame(body_frame, text=" Process Inspector & Smart Search ", width=260)
         middle_frame.pack(side="left", fill="both", padx=5)
         middle_frame.pack_propagate(False)
@@ -146,6 +153,30 @@ class UltimatePowerCleaner:
         remove_btn = ttk.Button(settings_frame, text="Remove Selected Rule", command=self.remove_from_whitelist)
         remove_btn.pack(anchor="e", pady=5)
 
+    # --- JSON STORAGE STORAGE LOGIC METRICS ---
+    def load_whitelist_from_file(self):
+        """Loads whitelisted processes from a local JSON configuration file."""
+        if os.path.exists(CONFIG_FILE):
+            try:
+                with open(CONFIG_FILE, "r") as f:
+                    data = json.load(f)
+                    self.user_whitelist = set(data.get("whitelist", []))
+            except Exception:
+                pass
+
+    def save_whitelist_to_file(self):
+        """Saves current memory whitelist array out onto a local hard-disk JSON registry."""
+        try:
+            with open(CONFIG_FILE, "w") as f:
+                json.dump({"whitelist": list(self.user_whitelist)}, f, indent=4)
+        except Exception:
+            pass
+
+    def populate_whitelist_box(self):
+        self.whitelist_box.delete(0, tk.END)
+        for item in sorted(self.user_whitelist):
+            self.whitelist_box.insert(tk.END, item)
+
     def log(self, message):
         self.log_box.config(state="normal")
         self.log_box.insert(tk.END, message + "\n")
@@ -190,9 +221,10 @@ class UltimatePowerCleaner:
         if text:
             if text not in self.user_whitelist:
                 self.user_whitelist.add(text)
-                self.whitelist_box.insert(tk.END, text)
+                self.save_whitelist_to_file()  # Save out to file instantly
+                self.populate_whitelist_box()
                 self.whitelist_entry.delete(0, tk.END)
-                messagebox.showinfo("Saved", f"'{text}' whitelisted.")
+                messagebox.showinfo("Saved", f"'{text}' whitelisted permanently.")
             else:
                 messagebox.showwarning("Error", "Already whitelisted.")
 
@@ -201,7 +233,8 @@ class UltimatePowerCleaner:
         if selected:
             item_text = self.whitelist_box.get(selected[0])
             self.user_whitelist.remove(item_text)
-            self.whitelist_box.delete(selected[0])
+            self.save_whitelist_to_file()  # Update system config file state
+            self.populate_whitelist_box()
 
     def scan_pc(self):
         self.scan_btn.config(state="disabled")
@@ -221,7 +254,6 @@ class UltimatePowerCleaner:
                 if not p_name: continue
                 p_name_lower = p_name.lower()
 
-                # Self protection rules loop
                 if (p_pid == current_pid or p_name_lower in ["python.exe", "pythonw.exe", script_filename, base_script_name, base_script_name.replace(".py", ".exe")]):
                     continue
 
