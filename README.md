@@ -22,7 +22,7 @@ It organizes your active tasks into distinct safety tiers, displays precise reso
 We are actively working to make Task Master Pro the ultimate alternative to the Windows Task Manager. Here is what we have planned for upcoming releases:
 
 ### 🟢 Phase 1: Quality of Life & Customization (Next Release)
-- [ ] **Config File Persistence (`.ini` or `.json`):** Save your custom whitelist permanently to your hard drive so you don't have to re-type safe apps every time you reopen the tool.
+- [x] **Config File Persistence (`.ini` or `.json`):** Save your custom whitelist permanently to your hard drive so you don't have to re-type safe apps every time you reopen the tool.
 - [ ] **Dark Mode Toggle:** A sleek, modern dark user interface option for nighttime gaming sessions.
 - [ ] **Real-time Live Refresh:** Automatically refresh the process lists every 5 seconds without needing to click the "Scan" button manually.
 
@@ -43,7 +43,7 @@ We are actively working to make Task Master Pro the ultimate alternative to the 
 
 Need help setting up, found a bug, or want to request a feature? Join our community Discord server to connect with other users and get direct support:
 
-👉 **[Join the Discord Server](https://discord.gg/9AChaMyFBe)**
+👉 **[Join the Discord Server](https://discord.gg/PBWUWREdAK)**
 
 ---
 
