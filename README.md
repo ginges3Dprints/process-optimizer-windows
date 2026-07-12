@@ -23,7 +23,7 @@ We are actively working to make Task Master Pro the ultimate alternative to the 
 
 ### 🟢 Phase 1: Quality of Life & Customization (Next Release)
 - [x] **Config File Persistence (`.json`):** Save your custom whitelist permanently to your hard drive so you don't have to re-type safe apps every time you reopen the tool.
-- [ ] **Dark Mode Toggle:** A sleek, modern dark user interface option for nighttime gaming sessions.
+- [x] **Dark Mode Toggle:** A sleek, modern dark user interface option for nighttime gaming sessions.
 - [ ] **Real-time Live Refresh:** Automatically refresh the process lists every 5 seconds without needing to click the "Scan" button manually.
 
 ### 🟡 Phase 2: Automation & Advanced Optimization
