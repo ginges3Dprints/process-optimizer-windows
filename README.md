@@ -51,7 +51,7 @@ Need help setting up, found a bug, or want to request a feature? Join our commun
 
 ## 🐛 Known Issues & Bug Tracker
 If you encounter an unexpected behavior or crash while using Task Master Pro, please check the tracker below before opening a new issue.
-1.- [ ] when auto-clean unneeded processes TaskMaster Pro close (came back when i update the gui) easy fix for now just put TaskMasterPro.exe in custom white list.
+- [ ] 1.when auto-clean unneeded processes TaskMaster Pro close (came back when i update the gui) easy fix for now just put TaskMasterPro.exe in custom white list.
 
 ### 📥 How to Report a Bug
 If you find a bug that isn't listed here:
