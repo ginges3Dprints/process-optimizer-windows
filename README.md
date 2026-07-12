@@ -36,6 +36,11 @@ We are actively working to make Task Master Pro the ultimate alternative to the 
 - [ ] **Process Tree Tracking:** Group child processes (like multiple open browser tabs) under a single expandable parent name to keep the dashboard tidy.
 - [ ] **Integrated App Control Panel:** A dedicated tab that reads Windows registry paths to list installed software and lets you launch native app uninstallers directly from the GUI.
 
+### 🔵 Phase 4: Advanced Threat Detection & Quarantine Sandbox
+- [ ] **Behavioral Diagnostics:** Introduce rules to automatically flag suspicious processes, such as hidden background tasks running without a user window or launching from temp folders.
+- [ ] **Secure Quarantine Vault:** Instead of hard-killing unknown apps, add an option to safely freeze their threads and move their file payload into an isolated folder so they can't run unless you restore them.
+- [ ] **Live Heuristic Risk Tags:** Display dynamic security threat levels inside the Process Inspector panel (e.g., `[SAFE]`, `[SUSPICIOUS]`, or `[CRITICAL THREAT]`) based on digital signatures and behavior.
+
 ---
 
 ## 💬 Community & Support
