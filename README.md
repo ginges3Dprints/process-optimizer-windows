@@ -49,6 +49,17 @@ Need help setting up, found a bug, or want to request a feature? Join our commun
 
 👉 **[Join the Discord Server](https://discord.gg/PBWUWREdAK)**
 
+## 🐛 Known Issues & Bug Tracker
+If you encounter an unexpected behavior or crash while using Task Master Pro, please check the tracker below before opening a new issue.
+1.[ ] when auto-clean unneeded processes TaskMaster Pro close (came back when i update the gui) easy fix for now just put TaskMasterPro.exe in custom white list.
+
+### 📥 How to Report a Bug
+If you find a bug that isn't listed here:
+1. Navigate to the **Issues** tab at the top of this GitHub repository.
+2. or join the Discord server above an make a ticket or carry on with the  with github
+3. Click **New Issue** and describe what happened.
+4. Provide your Windows Version, a quick screenshot of the layout error if applicable, and the exact steps to reproduce the crash.
+
 ---
 
 ## 🚀 How to Run or Build
