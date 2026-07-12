@@ -9,6 +9,8 @@ import tkinter as tk
 import tkinter.ttk as ttk
 from tkinter import messagebox
 import psutil
+import webbrowser
+import urllib.parse
 
 # Core Configuration Persistence Path
 CONFIG_FILE = "task_master_config.json"
@@ -131,6 +133,24 @@ def handle_kill_selected(gui):
         handle_scan(gui)
     except Exception as ex:
         messagebox.showerror("Target Registry Error", f"Could not end process {pid}: {str(ex)}")
+
+def google_selected_process(gui):
+    '''Grabs the process name selected in either box and opens a Google query for it.'''
+    selected_item = gui.Scrolledtree_Junk.selection() or gui.Scrolledtree_Safe.selection()
+    if not selected_item:
+        messagebox.showinfo("Web Search", "Please click on a process name in either list first to search it.")
+        return
+        
+    # Get the parent tree object containing the selection
+    tree = gui.Scrolledtree_Junk if gui.Scrolledtree_Junk.selection() else gui.Scrolledtree_Safe
+    item_data = tree.item(selected_item[0])
+    proc_name = item_data['text']
+    
+    if proc_name:
+        query = urllib.parse.quote(f"what is process {proc_name}")
+        url = f"https://www.google.com/search?q={query}"
+        log_to_console(gui, f"Launching Web browser query for footprint: '{proc_name}'")
+        webbrowser.open(url)
 
 # ------------------ WHITELIST COMPONENT OPERATIONS ------------------
 

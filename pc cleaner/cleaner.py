@@ -63,6 +63,9 @@ class Toplevel1:
         self.Scrolledtree_Safe.column("#0", width=180)
         self.Scrolledtree_Safe.column("PID", width=80)
         self.Scrolledtree_Safe.column("Memory", width=100)
+        
+        # Double-click shortcut to search safe items
+        self.Scrolledtree_Safe.bind("<Double-1>", lambda e: cleaner_support.google_selected_process(self))
 
         # Potential Junk List View
         self.Label_Junk = tk.Label(self.TNotebook_all_Dask, text="Background Items / Potential Junk", bg="#2b2b2b", fg="#d9534f", font=("Segoe UI", 10, "bold"))
@@ -77,6 +80,9 @@ class Toplevel1:
         self.Scrolledtree_Junk.column("#0", width=180)
         self.Scrolledtree_Junk.column("PID", width=80)
         self.Scrolledtree_Junk.column("Memory", width=100)
+        
+        # Double-click shortcut to search junk items
+        self.Scrolledtree_Junk.bind("<Double-1>", lambda e: cleaner_support.google_selected_process(self))
 
         # Inspector & Search Frame
         self.Label_inspector = tk.Label(self.TNotebook_all_Dask, text="Process Inspector Insights", bg="#2b2b2b", fg="#ffffff")
@@ -96,7 +102,7 @@ class Toplevel1:
         self.TProgressbar1 = ttk.Progressbar(self.TNotebook_all_Dask, orient="horizontal", mode="determinate")
         self.TProgressbar1.place(relx=0.51, rely=0.58, relwidth=0.46, height=20)
 
-        # --- DIRECT INLINE FONT ENFORCEMENT TO SIZE 7 TO AVOID CLIPPING ---
+        # --- ACTION PANEL CONTROL BUTTONS ---
         self.btn_scan = tk.Button(self.TNotebook_all_Dask, text="🔍 1. Scan Active Processes", bg="#0275d8", fg="white", font=("Segoe UI", 7, "bold"), command=lambda: cleaner_support.handle_scan(self))
         self.btn_scan.place(relx=0.51, rely=0.68, height=40, width=210)
 
@@ -105,6 +111,10 @@ class Toplevel1:
 
         self.btn_kill = tk.Button(self.TNotebook_all_Dask, text="❌ Kill Target Selection Only", bg="#d9534f", fg="white", font=("Segoe UI", 7, "bold"), command=lambda: cleaner_support.handle_kill_selected(self))
         self.btn_kill.place(relx=0.51, rely=0.80, height=40, width=210)
+
+        # ➔ NEW DEDICATED GOOGLE BUTTON IN THE CONTROL WEB DOCK
+        self.btn_google = tk.Button(self.TNotebook_all_Dask, text="🌐 Web Search Selected Process", bg="#3e3e3e", fg="white", font=("Segoe UI", 7, "bold"), command=lambda: cleaner_support.google_selected_process(self))
+        self.btn_google.place(relx=0.75, rely=0.80, height=40, width=210)
 
         # ------------------ TAB 2: WHITELIST ------------------
         self.TNotebook_all_white = tk.Frame(self.TNotebook_all, bg="#2b2b2b")
