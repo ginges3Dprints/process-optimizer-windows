@@ -1,42 +1,31 @@
 #!/bin/bash
+# Task Master Pro - Standalone Single Binary Compilation Script
 
-echo "=================================================="
-echo "🚀 Building Standalone Windows Executable (.exe)..."
-echo "=================================================="
+echo "========================================="
+echo "   Task Master Pro: Build Engine v2.8   "
+echo "========================================="
 
-# Verify source script exists
-if [ ! -f "cleaner.py" ]; then
-    echo "❌ Error: 'cleaner.py' not found in this folder!"
-    exit 1
-fi
+# 1. Clean legacy builds to prevent caching the old layout
+echo "[*] Purging legacy compilation artifacts..."
+rm -rf build dist __pycache__ *.spec
 
-# Check if icon exists, warn if missing but proceed
-ICON_OPTION=""
-if [ -f "spanner.ico" ]; then
-    echo "➔ Found spanner.ico. Applying icon metadata..."
-    ICON_OPTION="--icon=spanner.ico"
+# 2. Compile into ONE single standalone file with the Spanner Icon
+echo "[*] Launching PyInstaller asset packing sequences..."
+pyinstaller --noconfirm --onefile --windowed \
+    --name "TaskMasterPro" \
+    --icon="spanner.ico" \
+    --add-data "cleaner_support.py:." \
+    --hidden-import="cleaner_support" \
+    --hidden-import="psutil" \
+    --clean \
+    cleaner.py
+
+# 3. Verification pass
+if [ -f "dist/TaskMasterPro.exe" ] || [ -d "dist/TaskMasterPro" ]; then
+    echo "========================================="
+    echo "[+] SUCCESS: Single executable built!"
+    echo "[+] You can now grab the file out of 'dist/' and put it anywhere!"
+    echo "========================================="
 else
-    echo "⚠️ Warning: 'spanner.ico' not found. Building with standard default Windows icon."
-fi
-
-# Check if pyinstaller is available
-if ! command -v pyinstaller &> /dev/null
-then
-    echo "❌ Error: 'pyinstaller' command not recognized."
-    echo "➔ Please run './install_dependencies.sh' first."
-    exit 1
-fi
-
-# Run compilation
-echo "➔ Compiling using PyInstaller..."
-pyinstaller --noconsole --onefile $ICON_OPTION cleaner.py
-
-if [ $? -eq 0 ]; then
-    echo "=================================================="
-    echo "🎉 Compilation Complete!"
-    echo "➔ You can find your new application inside the 'dist' folder:"
-    echo "   📁 ./dist/cleaner.exe"
-    echo "=================================================="
-else
-    echo "❌ Error: PyInstaller encountered a compilation failure."
+    echo "[-] CRITICAL: Compilation routine failed."
 fi
