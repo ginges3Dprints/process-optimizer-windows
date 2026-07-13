@@ -28,6 +28,7 @@ We are actively working to make Task Master Pro the ultimate alternative to the 
 
 ### 🟡 Phase 2: Automation & Advanced Optimization
 - [ ] **Automated "Game Mode" Trigger:** Detect when a heavy game launcher (like Steam or Epic Games) opens, and automatically purge background junk in silence to maximize FPS.
+- [ ] **Game-Mode Exclusion List. A Exclusion List that you can select programs thats are running that may be closed when game-mode is enabled
 - [ ] **CPU Usage Tracking:** Add a second line to the Inspector box showing active CPU percentage utilization alongside the RAM metrics.
 - [ ] **Exportable System Logs:** Allow users to save their "Activity Console" text as a `.txt` file to diagnose persistent system slowdowns.
 
