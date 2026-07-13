@@ -51,16 +51,24 @@ Need help setting up, found a bug, or want to request a feature? Join our commun
 
 ---
 
-## 🚀 How to Run or Build
+## 🚀 How to Run or Build from Source
 
-If you do not wish to run the pre-provided executable file, you can easily build your own standalone version directly from the source code.
+If you prefer to run the application directly through a Python interpreter or build your own standalone version instead of using the pre-provided executable, follow the step-by-step pipelines below.
 
-### Prerequisites (For Building)
-1. Ensure you have **Python 3** installed on your system.
-2. Place your script (`cleaner.py`) and your icon file (`spanner.ico`) in the same working directory.
+### 📋 System Prerequisites
+Ensure you have Python 3.10+ installed on your Windows machine. Your working development folder must contain all core project components in the same root directory:
+`cleaner.py`, `cleaner_support.py`, `build_exe.sh`, `install_dependencies.sh`, and `spanner.ico`.
 
-### Quick Setup Scripts
-We provide two shell scripts (`.sh`) to automate the installation and build phases using Git Bash, WSL, or a standard bash terminal:
+---
 
-1. **`install_dependencies.sh`**: Installs PyInstaller and required runtime libraries (`psutil`).
-2. **`build_exe.sh`**: Compiles the source script into a standalone, single-file windows `.exe` with a hidden terminal console and the custom spanner thumbnail icon mapped automatically.
+### 🏃 Channel A: Running Directly From Source (Development)
+
+To run the live workspace scripts without compiling them into an asset:
+
+1. **Open your Terminal:** Launch Git Bash, PowerShell, or Command Prompt in your root project folder.
+2. **Install Core Runtime Libraries:** Execute the setup script or install `psutil` manually:
+   ```bash
+   chmod +x install_dependencies.sh
+   ./install_dependencies.sh
+   # OR manually via pip:
+   pip install psutil
