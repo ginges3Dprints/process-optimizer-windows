@@ -49,29 +49,26 @@ Need help setting up, found a bug, or want to request a feature? Join our commun
 
 👉 **[Join the Discord Server](https://discord.gg/PBWUWREdAK)**
 
-## 🐛 Known Issues & Bug Tracker
-If you encounter an unexpected behavior or crash while using Task Master Pro, please check the tracker below before opening a new issue.
-- [ ] 1.when auto-clean unneeded processes TaskMaster Pro close (came back when i update the gui) easy fix for now just put TaskMasterPro.exe in custom white list.
+---
 
-### 📥 How to Report a Bug
-If you find a bug that isn't listed here:
-1. Navigate to the **Issues** tab at the top of this GitHub repository.
-2. or join the Discord server above an make a ticket or carry on with the  with github
-3. Click **New Issue** and describe what happened.
-4. Provide your Windows Version, a quick screenshot of the layout error if applicable, and the exact steps to reproduce the crash.
+## 🚀 How to Run or Build from Source
+
+If you prefer to run the application directly through a Python interpreter or build your own standalone version instead of using the pre-provided executable, follow the step-by-step pipelines below.
+
+### 📋 System Prerequisites
+Ensure you have Python 3.10+ installed on your Windows machine. Your working development folder must contain all core project components in the same root directory:
+`cleaner.py`, `cleaner_support.py`, `build_exe.sh`, `install_dependencies.sh`, and `spanner.ico`.
 
 ---
 
-## 🚀 How to Run or Build
+### 🏃 Channel A: Running Directly From Source (Development)
 
-If you do not wish to run the pre-provided executable file, you can easily build your own standalone version directly from the source code.
+To run the live workspace scripts without compiling them into an asset:
 
-### Prerequisites (For Building)
-1. Ensure you have **Python 3** installed on your system.
-2. Place your script (`cleaner.py`) and your icon file (`spanner.ico`) in the same working directory.
-
-### Quick Setup Scripts
-We provide two shell scripts (`.sh`) to automate the installation and build phases using Git Bash, WSL, or a standard bash terminal:
-
-1. **`install_dependencies.sh`**: Installs PyInstaller and required runtime libraries (`psutil`).
-2. **`build_exe.sh`**: Compiles the source script into a standalone, single-file windows `.exe` with a hidden terminal console and the custom spanner thumbnail icon mapped automatically.
+1. **Open your Terminal:** Launch Git Bash, PowerShell, or Command Prompt in your root project folder.
+2. **Install Core Runtime Libraries:** Execute the setup script or install `psutil` manually:
+   ```bash
+   chmod +x install_dependencies.sh
+   ./install_dependencies.sh
+   # OR manually via pip:
+   pip install psutil
